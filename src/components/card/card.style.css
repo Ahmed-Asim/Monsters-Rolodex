@@ -1,0 +1,22 @@
+.monster-card {
+    background-color: var(--light-cyan);
+    padding: 25px;
+    transition: transform 400ms;
+    cursor: pointer;
+    border: 1px solid grey;
+    border-radius: 5px;
+    font-family: "helvetica";
+    transform: translateZ(0);
+}
+
+.monster-card:hover {
+    transform: scale(1.05);
+}
+
+.monster-card img {
+    width: 100%;
+}
+
+.monster-card p {
+    margin-top: 2em;
+}

@@ -1,0 +1,49 @@
+.clearable-input-wrapper {
+    width: fit-content;
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.clearable-input-wrapper input {
+    padding: 10px;
+    width: 150px;
+    height: 50px;
+}
+
+.clearable-input-wrapper input:focus {
+    outline: none;
+}
+
+.clearable-input-wrapper .cross {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    width: 10px;
+    height: 10px;
+}
+
+.clearable-input-wrapper .cross:after, .clearable-input-wrapper .cross:before {
+    content: "";
+    display: none;
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: var(--gradiant);
+    top: 50%;
+    left: 50%;
+}
+
+.clearable-input-wrapper .cross:before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.clearable-input-wrapper .cross:after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.clearable-input-wrapper input:focus ~ .cross.active:after, .clearable-input-wrapper input:focus ~ .cross.active:before {
+    display: block;
+}
