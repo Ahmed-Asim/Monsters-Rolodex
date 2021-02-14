@@ -5,6 +5,7 @@ import {useEffect, useState} from 'react';
 
 function App() {
   const [monsters, setMonsters] = useState([]);
+  const [filterText, setFilterText] = useState('');
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
     .then((response) => response.json())
@@ -13,15 +14,22 @@ function App() {
     })
     ;
   }, []);
+  const filterInputHandler = (e) => {
+    setFilterText(e.target.value.trim());
+  };
   return (
       <div className="App">
         <h1>Monsters Rolodex</h1>
         <ClearableInput
             placeholder={'search monsters'}
-            handler={''}
+            handler={filterInputHandler}
         />
         <div className="monster-card-list">
-          {monsters.map((monster) => <MonsterCard key={monster.key} {...monster}/>)}
+          {
+            monsters
+            .filter((monster) => monster.name.toLowerCase().includes(filterText))
+            .map((monster) => <MonsterCard key={monster.key} {...monster}/>)
+          }
         </div>
       </div>
   );
